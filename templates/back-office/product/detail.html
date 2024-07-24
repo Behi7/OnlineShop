@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+    <style>
+        body {
+          background-color: #f0fff0; /* Light green background */
+          font-family: Arial, sans-serif;
+        }
+        .product-details {
+          margin: 20px auto;
+          width: 500px;
+          border: 1px solid #99cc99; /* Light green border */
+          border-radius: 5px;
+          padding: 20px;
+        }
+        .product-details h2 {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        .product-details p {
+          margin-bottom: 5px;
+        }
+        .product-images {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 10px;
+        }
+        .product-images img {
+          margin: 5px;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+        }
+      </style>
+</head>
+<body>
+    {{queryset.name}}
+    {{queryset.category.name}}
+    {{queryset.quantity}}
+    {{queryset.description}}
+
+    <hr>
+    {% for image in images %}
+    <img src="{{image.img.url}}" alt="" width="200px">
+    {% endfor %}
+</body>
+</html>
