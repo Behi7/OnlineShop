@@ -60,3 +60,27 @@ def createProduct(request):
 def deleteProduct(request, id):
     models.Product.objects.get(id=id).delete()
     return redirect('listProduct')
+
+
+def storyEnter(request):
+    list_e = models.EnterProduct.objects.all()
+    context = {'list_e': list_e}
+    return render(request, 'back-office/product/storyenter.html', context)
+
+def createEnter(request):
+    queryset = models.Product.objects.all()
+    context = {}
+    context['queryset'] = queryset
+    if request.method == "POST":
+        models.EnterProduct.objects.create(
+            product = request.POST['product'],
+            enter_quantity = request.POST['enter_quantity'],
+            old_quantity = models.Product.objects.get(id = request.POST['product']).quantity,
+            info = request.POST['info']
+        )
+
+    return render(request, 'back-office/product/createenter.html', context)
+
+def enterDelete(request, id):
+    models.EnterProduct.objects.get(id=id).delete()
+    return redirect('enter')
