@@ -81,6 +81,17 @@ def createEnter(request):
 
     return render(request, 'back-office/product/createenter.html', context)
 
+def updateEnter(request):
+    if request.method == "POST":
+        models.EnterProduct.objects.update(
+            product = request.POST['product'],
+            enter_quantity = request.POST['enter_quantity'],
+            old_quantity = models.Product.objects.get(id = request.POST['product']).quantity,
+            info = request.POST['info']
+        )
+
+    return render(request, 'back-office/product/updateenter.html')
+
 def enterDelete(request, id):
     models.EnterProduct.objects.get(id=id).delete()
     return redirect('enter')

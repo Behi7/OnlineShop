@@ -9,4 +9,5 @@ urlpatterns = [
     path('enter', views.storyEnter, name='storyEnter'),
     path('createenter', views.createEnter, name = 'createEnter'),
     path('delete/<int:id>/', views.enterDelete, name = 'enterDelete'),
+    path('updateenter', views.updateEnter, name = 'updateEnter'),    
 ]
